@@ -1,13 +1,30 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { createClient } from "@supabase/supabase-js";
 
 type Msg = { role: "user" | "assistant" | "system"; content: string };
 
+async function verifyBearer(request: Request) {
+  const auth = request.headers.get("authorization");
+  if (!auth?.startsWith("Bearer ")) return null;
+  const token = auth.slice(7);
+  const url = process.env.SUPABASE_URL;
+  const anon = process.env.SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !anon) return null;
+  const supa = createClient(url, anon, {
+    auth: { persistSession: false, autoRefreshToken: false, storage: undefined },
+  });
+  const { data, error } = await supa.auth.getUser(token);
+  if (error || !data.user) return null;
+  return data.user;
+}
+
 export const Route = createFileRoute("/api/chat")({
   server: {
-    middleware: [requireSupabaseAuth],
     handlers: {
       POST: async ({ request }) => {
+        const user = await verifyBearer(request);
+        if (!user) return new Response("Unauthorized", { status: 401 });
+
         const key = process.env.LOVABLE_API_KEY;
         if (!key) return new Response("Missing LOVABLE_API_KEY", { status: 500 });
 
