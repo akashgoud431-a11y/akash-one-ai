@@ -99,10 +99,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "A unified AI ecosystem for education, healthcare, cloud, search and intelligence.",
+          "Akash One is a unified AI ecosystem for education, healthcare, cloud storage, search and intelligence — one premium platform.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Akash One — Everything You Need. One Platform." },
+      { name: "twitter:description", content: "Akash One is a unified AI ecosystem for education, healthcare, cloud storage, search and intelligence — one premium platform." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/6c6a4311-1fa3-4574-86bb-4f09c596b076" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/6c6a4311-1fa3-4574-86bb-4f09c596b076" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
