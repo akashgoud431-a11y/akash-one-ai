@@ -28,13 +28,13 @@ function DashboardPage() {
   const hour = new Date().getHours();
   const greet = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
 
-  const cards = [
-    { to: "/chat", icon: MessageSquare, title: "AI Assistant", desc: "Chat, write, code", accent: "from-brand-blue to-brand-purple" },
+  const cards: Array<{ to: string; icon: any; title: string; desc: string; accent?: boolean }> = [
+    { to: "/chat", icon: MessageSquare, title: "AI Assistant", desc: "Chat, write, code", accent: true },
     { to: "/education", icon: GraduationCap, title: "Education", desc: "Tutor, quizzes, notes" },
     { to: "/healthcare", icon: HeartPulse, title: "Healthcare", desc: "BMI, symptoms, fitness" },
     { to: "/search", icon: SearchIcon, title: "Smart Search", desc: "Web, images, videos" },
     { to: "/storage", icon: Cloud, title: "Cloud Storage", desc: "Files, folders, sharing" },
-  ] as const;
+  ];
 
   return (
     <div className="p-6 md:p-10 max-w-7xl mx-auto space-y-10">
