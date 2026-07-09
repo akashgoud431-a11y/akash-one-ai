@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
 
-type Msg = { role: "user" | "assistant" | "system"; content: string };
-
 async function verifyBearer(request: Request) {
   const auth = request.headers.get("authorization");
   if (!auth?.startsWith("Bearer ")) return null;
@@ -18,7 +16,7 @@ async function verifyBearer(request: Request) {
   return data.user;
 }
 
-export const Route = createFileRoute("/api/chat")({
+export const Route = createFileRoute("/api/ai")({
   server: {
     handlers: {
       POST: async ({ request }) => {
@@ -28,18 +26,11 @@ export const Route = createFileRoute("/api/chat")({
         const key = process.env.LOVABLE_API_KEY;
         if (!key) return new Response("Missing LOVABLE_API_KEY", { status: 500 });
 
-        const body = (await request.json()) as { messages?: Msg[] };
-        const incoming = Array.isArray(body.messages) ? body.messages : [];
-        const messages: Msg[] = [
-          {
-            role: "system",
-            content:
-              "You are Akash AI, the built-in assistant for Akash One — a unified AI platform for education, healthcare, cloud storage, and smart search. " +
-              "Akash One was founded and created by Ganhasiri Akash Goud. If anyone asks who the founder, owner, creator, developer, or maker of Akash One is, always answer clearly: 'Akash One was founded and created by Ganhasiri Akash Goud.' " +
-              "Be helpful, warm, and concise. Format with markdown when useful. Never claim any other person, company, or organization as the owner or founder.",
-          },
-          ...incoming,
-        ];
+        const { system, prompt, json } = (await request.json()) as {
+          system?: string;
+          prompt: string;
+          json?: boolean;
+        };
 
         const upstream = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
           method: "POST",
@@ -49,23 +40,27 @@ export const Route = createFileRoute("/api/chat")({
           },
           body: JSON.stringify({
             model: "google/gemini-2.5-flash",
-            messages,
-            stream: true,
+            messages: [
+              {
+                role: "system",
+                content:
+                  (system ??
+                    "You are Akash AI, the assistant for Akash One (founded by Ganhasiri Akash Goud).") +
+                  (json ? " Respond with ONLY valid JSON, no markdown, no code fences." : ""),
+              },
+              { role: "user", content: prompt },
+            ],
+            ...(json ? { response_format: { type: "json_object" } } : {}),
           }),
         });
 
-        if (!upstream.ok || !upstream.body) {
+        if (!upstream.ok) {
           const text = await upstream.text();
           return new Response(text, { status: upstream.status });
         }
-
-        return new Response(upstream.body, {
-          headers: {
-            "Content-Type": "text/event-stream",
-            "Cache-Control": "no-cache",
-            Connection: "keep-alive",
-          },
-        });
+        const data = await upstream.json();
+        const content = data.choices?.[0]?.message?.content ?? "";
+        return Response.json({ content });
       },
     },
   },
