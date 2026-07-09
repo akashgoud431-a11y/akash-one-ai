@@ -268,7 +268,7 @@ function QuizSection() {
             </div>
           ))}
           {!submitted ? (
-            <Button onClick={() => setSubmitted(true)} className="bg-gradient-brand rounded-full w-full">Submit</Button>
+            <Button onClick={() => { setSubmitted(true); localStorage.setItem("akash-quizzes", String((parseInt(localStorage.getItem("akash-quizzes") || "0")) + 1)); }} className="bg-gradient-brand rounded-full w-full">Submit</Button>
           ) : (
             <div className="glass rounded-2xl p-6 text-center">
               <div className="text-sm text-muted-foreground">Your score</div>
