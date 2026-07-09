@@ -23,10 +23,10 @@ import {
   Search,
   Cloud,
   Settings,
-  Bell,
   LogOut,
   Sparkles,
 } from "lucide-react";
+import { NotificationsMenu } from "@/components/notifications-menu";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { toast } from "sonner";
@@ -154,10 +154,12 @@ function AuthLayout() {
                 Akash One
               </div>
             </div>
+            <Link to="/search" className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full glass text-sm text-muted-foreground hover:text-foreground max-w-md flex-1 mx-4">
+              <Search className="size-4" />
+              <span>Search everything…</span>
+            </Link>
             <div className="flex items-center gap-1">
-              <Button variant="ghost" size="icon" className="rounded-full">
-                <Bell className="size-4" />
-              </Button>
+              <NotificationsMenu />
               <ThemeToggle />
             </div>
           </header>
