@@ -263,12 +263,20 @@ function LandingPage() {
           <div>
             <h5 className="font-bold mb-4 text-sm">Company</h5>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground">About</a></li>
-              <li><a href="#" className="hover:text-foreground">Security</a></li>
-              <li><a href="#" className="hover:text-foreground">Privacy</a></li>
-              <li><a href="mailto:hello@akashone.app" className="hover:text-foreground">Contact</a></li>
+              <li><Link to="/about" className="hover:text-foreground">About Us</Link></li>
+              <li><Link to="/contact" className="hover:text-foreground">Contact Us</Link></li>
+              <li><Link to="/privacy" className="hover:text-foreground">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="hover:text-foreground">Terms & Conditions</Link></li>
+              <li><Link to="/disclaimer" className="hover:text-foreground">Disclaimer</Link></li>
             </ul>
           </div>
+        </div>
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground pb-4">
+          <Link to="/about" className="hover:text-foreground">About</Link>
+          <Link to="/contact" className="hover:text-foreground">Contact</Link>
+          <Link to="/privacy" className="hover:text-foreground">Privacy</Link>
+          <Link to="/terms" className="hover:text-foreground">Terms</Link>
+          <Link to="/disclaimer" className="hover:text-foreground">Disclaimer</Link>
         </div>
         <div className="max-w-7xl mx-auto text-center border-t border-border/40 pt-6">
           <p className="text-xs text-muted-foreground">© 2026 Akash One Systems. All rights reserved.</p>
