@@ -9,7 +9,7 @@ const entries = [
   { path: "/privacy", priority: "0.5", changefreq: "yearly" as const },
   { path: "/terms", priority: "0.5", changefreq: "yearly" as const },
   { path: "/disclaimer", priority: "0.5", changefreq: "yearly" as const },
-  { path: "/auth", priority: "0.6", changefreq: "monthly" as const },
+  
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({

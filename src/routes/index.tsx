@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
+
 import {
   Sparkles,
   Search,
@@ -27,13 +27,14 @@ export const Route = createFileRoute("/")({
 });
 
 function LandingPage() {
-  const navigate = useNavigate();
+  
   const [query, setQuery] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate({ to: "/auth" });
+    const target = document.getElementById("modules");
+    target?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -53,15 +54,6 @@ function LandingPage() {
           </div>
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Link to="/auth" className="hidden sm:inline-flex text-sm font-semibold px-4 py-2 text-muted-foreground hover:text-foreground">
-              Login
-            </Link>
-            <Link
-              to="/auth"
-              className="hidden sm:inline-flex text-sm font-semibold px-5 py-2.5 bg-foreground text-background rounded-full hover:opacity-90 transition-all shadow-lg shadow-foreground/10"
-            >
-              Get Started
-            </Link>
             <button className="md:hidden p-2" onClick={() => setMobileOpen((v) => !v)} aria-label="Toggle menu">
               {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
             </button>
@@ -72,7 +64,6 @@ function LandingPage() {
             <a href="#modules" onClick={() => setMobileOpen(false)}>Modules</a>
             <a href="#stats" onClick={() => setMobileOpen(false)}>Trust</a>
             <a href="#faq" onClick={() => setMobileOpen(false)}>FAQ</a>
-            <Link to="/auth" className="font-semibold">Login</Link>
           </div>
         )}
       </nav>
@@ -116,13 +107,13 @@ function LandingPage() {
       </section>
 
       {/* Floating AI Button */}
-      <Link
-        to="/auth"
+      <a
+        href="#modules"
         className="fixed bottom-6 right-6 z-40 flex items-center gap-3 px-5 py-3.5 glass rounded-2xl shadow-2xl hover:scale-105 transition-transform"
       >
         <div className="size-2.5 rounded-full bg-brand-purple animate-pulse" />
-        <span className="font-semibold text-sm">Ask Akash AI</span>
-      </Link>
+        <span className="font-semibold text-sm">Explore Akash</span>
+      </a>
 
       {/* Modules */}
       <section id="modules" className="max-w-7xl mx-auto px-6 py-16 md:py-24">
@@ -236,11 +227,11 @@ function LandingPage() {
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
             One platform. Every module you need. Sign up in seconds.
           </p>
-          <Link to="/auth">
+          <a href="#modules">
             <Button size="lg" className="bg-gradient-brand text-primary-foreground rounded-full h-12 px-8 shadow-lg shadow-primary/25 hover:opacity-95">
-              Get started free <ArrowRight className="ml-2 size-4" />
+              Explore modules <ArrowRight className="ml-2 size-4" />
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
 
