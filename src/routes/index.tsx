@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
+
 import {
   Sparkles,
   Search,
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
 });
 
 function LandingPage() {
-  const navigate = useNavigate();
+  
   const [query, setQuery] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
 
