@@ -22,6 +22,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { supabase } from "@/integrations/supabase/client";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AdsterraGlobal } from "@/components/adsterra-ads";
 
 function NotFoundComponent() {
   return (
@@ -112,13 +113,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
-    scripts: [
-      {
-        async: true,
-        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1513974714246413",
-        crossOrigin: "anonymous",
-      },
-    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -158,6 +152,7 @@ function RootComponent() {
       <ThemeProvider>
         <Outlet />
         <Toaster richColors position="top-right" />
+        <AdsterraGlobal />
       </ThemeProvider>
     </QueryClientProvider>
   );

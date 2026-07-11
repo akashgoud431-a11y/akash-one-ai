@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ThemeToggle } from "@/components/theme-toggle";
 import aiHero from "@/assets/ai-hero.jpg";
+import { AdsterraNative, AdsterraResponsiveBanner } from "@/components/adsterra-ads";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -183,6 +184,11 @@ function LandingPage() {
         </div>
       </section>
 
+      <div className="max-w-7xl mx-auto px-6">
+        <AdsterraResponsiveBanner />
+      </div>
+
+
       {/* Testimonials */}
       <section className="py-20 md:py-24 max-w-7xl mx-auto px-6">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-14">
@@ -201,6 +207,12 @@ function LandingPage() {
           />
         </div>
       </section>
+
+      <div className="max-w-3xl mx-auto px-6">
+        <AdsterraNative />
+      </div>
+
+
 
       {/* FAQ */}
       <section id="faq" className="py-20 md:py-24 max-w-3xl mx-auto px-6">
