@@ -184,6 +184,11 @@ function LandingPage() {
         </div>
       </section>
 
+      <div className="max-w-7xl mx-auto px-6">
+        <AdsterraResponsiveBanner />
+      </div>
+
+
       {/* Testimonials */}
       <section className="py-20 md:py-24 max-w-7xl mx-auto px-6">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-14">
