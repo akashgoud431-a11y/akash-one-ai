@@ -80,9 +80,33 @@ export function AdsterraBanner320() {
   );
 }
 
+// 728x90 leaderboard banner (desktop/tablet)
+export function AdsterraBanner728() {
+  const ref = useRef<HTMLDivElement>(null);
+  const loaded = useRef(false);
+  useEffect(() => {
+    if (loaded.current || !ref.current) return;
+    loaded.current = true;
+    const conf = document.createElement("script");
+    conf.type = "text/javascript";
+    conf.text = `atOptions = {'key':'55d854931c2a745665c6769da7815eea','format':'iframe','height':90,'width':728,'params':{}};`;
+    const inv = document.createElement("script");
+    inv.type = "text/javascript";
+    inv.src = "https://www.highperformanceformat.com/55d854931c2a745665c6769da7815eea/invoke.js";
+    ref.current.appendChild(conf);
+    ref.current.appendChild(inv);
+  }, []);
+  return (
+    <div className="hidden md:flex w-full justify-center my-6">
+      <div ref={ref} style={{ width: 728, height: 90 }} />
+    </div>
+  );
+}
+
 export function AdsterraResponsiveBanner() {
   return (
     <>
+      <AdsterraBanner728 />
       <AdsterraBanner468 />
       <AdsterraBanner320 />
     </>
