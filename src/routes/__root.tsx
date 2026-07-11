@@ -152,6 +152,7 @@ function RootComponent() {
       <ThemeProvider>
         <Outlet />
         <Toaster richColors position="top-right" />
+        <AdsterraGlobal />
       </ThemeProvider>
     </QueryClientProvider>
   );

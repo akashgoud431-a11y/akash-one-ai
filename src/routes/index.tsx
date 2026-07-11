@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ThemeToggle } from "@/components/theme-toggle";
 import aiHero from "@/assets/ai-hero.jpg";
+import { AdsterraNative, AdsterraResponsiveBanner } from "@/components/adsterra-ads";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
