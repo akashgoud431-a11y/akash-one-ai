@@ -21,6 +21,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ThemeToggle } from "@/components/theme-toggle";
 import aiHero from "@/assets/ai-hero.jpg";
 import { AdsterraNative, AdsterraResponsiveBanner } from "@/components/adsterra-ads";
+import { AIChatWidget } from "@/components/ai-chat-widget";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -106,14 +107,8 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* Floating AI Button */}
-      <a
-        href="#modules"
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-3 px-5 py-3.5 glass rounded-2xl shadow-2xl hover:scale-105 transition-transform"
-      >
-        <div className="size-2.5 rounded-full bg-brand-purple animate-pulse" />
-        <span className="font-semibold text-sm">Explore Akash</span>
-      </a>
+      {/* Floating AI Chat Assistant */}
+      <AIChatWidget />
 
       {/* Modules */}
       <section id="modules" className="max-w-7xl mx-auto px-6 py-16 md:py-24">
