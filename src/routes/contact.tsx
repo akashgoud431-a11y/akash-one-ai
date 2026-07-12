@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/contact")({
@@ -45,13 +45,24 @@ function ContactPage() {
           Have a question, feedback or partnership idea? We'd love to hear from you.
         </p>
 
-        <div className="glass rounded-2xl p-6 mb-8 flex items-center gap-4">
-          <div className="size-11 rounded-xl bg-gradient-brand grid place-items-center shadow-lg shadow-primary/25">
-            <Mail className="size-5 text-primary-foreground" />
+        <div className="grid sm:grid-cols-2 gap-4 mb-8">
+          <div className="glass rounded-2xl p-6 flex items-center gap-4">
+            <div className="size-11 rounded-xl bg-gradient-brand grid place-items-center shadow-lg shadow-primary/25 shrink-0">
+              <Mail className="size-5 text-primary-foreground" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-sm text-muted-foreground">Email us at</div>
+              <a href="mailto:akashgoud431@gmail.com" className="font-semibold hover:underline break-all">akashgoud431@gmail.com</a>
+            </div>
           </div>
-          <div>
-            <div className="text-sm text-muted-foreground">Email us at</div>
-            <a href="mailto:hello@akashone.app" className="font-semibold hover:underline">hello@akashone.app</a>
+          <div className="glass rounded-2xl p-6 flex items-center gap-4">
+            <div className="size-11 rounded-xl bg-gradient-brand grid place-items-center shadow-lg shadow-primary/25 shrink-0">
+              <Phone className="size-5 text-primary-foreground" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-sm text-muted-foreground">Call us at</div>
+              <a href="tel:+919676977347" className="font-semibold hover:underline">+91 9676977347</a>
+            </div>
           </div>
         </div>
 

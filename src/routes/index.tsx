@@ -21,6 +21,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ThemeToggle } from "@/components/theme-toggle";
 import aiHero from "@/assets/ai-hero.jpg";
 import { AdsterraNative, AdsterraResponsiveBanner } from "@/components/adsterra-ads";
+import { AIChatWidget } from "@/components/ai-chat-widget";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -64,6 +65,8 @@ function LandingPage() {
             <a href="#modules" onClick={() => setMobileOpen(false)}>Modules</a>
             <a href="#stats" onClick={() => setMobileOpen(false)}>Trust</a>
             <a href="#faq" onClick={() => setMobileOpen(false)}>FAQ</a>
+            <Link to="/about" onClick={() => setMobileOpen(false)}>About</Link>
+            <Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
           </div>
         )}
       </nav>
@@ -106,14 +109,8 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* Floating AI Button */}
-      <a
-        href="#modules"
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-3 px-5 py-3.5 glass rounded-2xl shadow-2xl hover:scale-105 transition-transform"
-      >
-        <div className="size-2.5 rounded-full bg-brand-purple animate-pulse" />
-        <span className="font-semibold text-sm">Explore Akash</span>
-      </a>
+      {/* Floating AI Chat Assistant */}
+      <AIChatWidget />
 
       {/* Modules */}
       <section id="modules" className="max-w-7xl mx-auto px-6 py-16 md:py-24">
@@ -268,6 +265,7 @@ function LandingPage() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link to="/about" className="hover:text-foreground">About Us</Link></li>
               <li><Link to="/contact" className="hover:text-foreground">Contact Us</Link></li>
+              <li><Link to="/faq" className="hover:text-foreground">FAQ</Link></li>
               <li><Link to="/privacy" className="hover:text-foreground">Privacy Policy</Link></li>
               <li><Link to="/terms" className="hover:text-foreground">Terms & Conditions</Link></li>
               <li><Link to="/disclaimer" className="hover:text-foreground">Disclaimer</Link></li>
@@ -277,6 +275,7 @@ function LandingPage() {
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground pb-4">
           <Link to="/about" className="hover:text-foreground">About</Link>
           <Link to="/contact" className="hover:text-foreground">Contact</Link>
+          <Link to="/faq" className="hover:text-foreground">FAQ</Link>
           <Link to="/privacy" className="hover:text-foreground">Privacy</Link>
           <Link to="/terms" className="hover:text-foreground">Terms</Link>
           <Link to="/disclaimer" className="hover:text-foreground">Disclaimer</Link>
