@@ -9,20 +9,40 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WriterRouteImport } from './routes/writer'
+import { Route as TranslatorRouteImport } from './routes/translator'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SummarizerRouteImport } from './routes/summarizer'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as IdeasRouteImport } from './routes/ideas'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CodeLabRouteImport } from './routes/code-lab'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiToolRouteImport } from './routes/api/tool'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 
+const WriterRoute = WriterRouteImport.update({
+  id: '/writer',
+  path: '/writer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TranslatorRoute = TranslatorRouteImport.update({
+  id: '/translator',
+  path: '/translator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SummarizerRoute = SummarizerRouteImport.update({
+  id: '/summarizer',
+  path: '/summarizer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -33,6 +53,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IdeasRoute = IdeasRouteImport.update({
+  id: '/ideas',
+  path: '/ideas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -48,6 +73,11 @@ const DisclaimerRoute = DisclaimerRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CodeLabRoute = CodeLabRouteImport.update({
+  id: '/code-lab',
+  path: '/code-lab',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -74,24 +104,34 @@ const ApiChatRoute = ApiChatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/code-lab': typeof CodeLabRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faq': typeof FaqRoute
+  '/ideas': typeof IdeasRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/summarizer': typeof SummarizerRoute
   '/terms': typeof TermsRoute
+  '/translator': typeof TranslatorRoute
+  '/writer': typeof WriterRoute
   '/api/chat': typeof ApiChatRoute
   '/api/tool': typeof ApiToolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/code-lab': typeof CodeLabRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faq': typeof FaqRoute
+  '/ideas': typeof IdeasRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/summarizer': typeof SummarizerRoute
   '/terms': typeof TermsRoute
+  '/translator': typeof TranslatorRoute
+  '/writer': typeof WriterRoute
   '/api/chat': typeof ApiChatRoute
   '/api/tool': typeof ApiToolRoute
 }
@@ -99,12 +139,17 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/code-lab': typeof CodeLabRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faq': typeof FaqRoute
+  '/ideas': typeof IdeasRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/summarizer': typeof SummarizerRoute
   '/terms': typeof TermsRoute
+  '/translator': typeof TranslatorRoute
+  '/writer': typeof WriterRoute
   '/api/chat': typeof ApiChatRoute
   '/api/tool': typeof ApiToolRoute
 }
@@ -113,36 +158,51 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/code-lab'
     | '/contact'
     | '/disclaimer'
     | '/faq'
+    | '/ideas'
     | '/privacy'
     | '/sitemap.xml'
+    | '/summarizer'
     | '/terms'
+    | '/translator'
+    | '/writer'
     | '/api/chat'
     | '/api/tool'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/code-lab'
     | '/contact'
     | '/disclaimer'
     | '/faq'
+    | '/ideas'
     | '/privacy'
     | '/sitemap.xml'
+    | '/summarizer'
     | '/terms'
+    | '/translator'
+    | '/writer'
     | '/api/chat'
     | '/api/tool'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/code-lab'
     | '/contact'
     | '/disclaimer'
     | '/faq'
+    | '/ideas'
     | '/privacy'
     | '/sitemap.xml'
+    | '/summarizer'
     | '/terms'
+    | '/translator'
+    | '/writer'
     | '/api/chat'
     | '/api/tool'
   fileRoutesById: FileRoutesById
@@ -150,23 +210,49 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CodeLabRoute: typeof CodeLabRoute
   ContactRoute: typeof ContactRoute
   DisclaimerRoute: typeof DisclaimerRoute
   FaqRoute: typeof FaqRoute
+  IdeasRoute: typeof IdeasRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SummarizerRoute: typeof SummarizerRoute
   TermsRoute: typeof TermsRoute
+  TranslatorRoute: typeof TranslatorRoute
+  WriterRoute: typeof WriterRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiToolRoute: typeof ApiToolRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/writer': {
+      id: '/writer'
+      path: '/writer'
+      fullPath: '/writer'
+      preLoaderRoute: typeof WriterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/translator': {
+      id: '/translator'
+      path: '/translator'
+      fullPath: '/translator'
+      preLoaderRoute: typeof TranslatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/summarizer': {
+      id: '/summarizer'
+      path: '/summarizer'
+      fullPath: '/summarizer'
+      preLoaderRoute: typeof SummarizerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -181,6 +267,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ideas': {
+      id: '/ideas'
+      path: '/ideas'
+      fullPath: '/ideas'
+      preLoaderRoute: typeof IdeasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -202,6 +295,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/code-lab': {
+      id: '/code-lab'
+      path: '/code-lab'
+      fullPath: '/code-lab'
+      preLoaderRoute: typeof CodeLabRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -238,12 +338,17 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CodeLabRoute: CodeLabRoute,
   ContactRoute: ContactRoute,
   DisclaimerRoute: DisclaimerRoute,
   FaqRoute: FaqRoute,
+  IdeasRoute: IdeasRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SummarizerRoute: SummarizerRoute,
   TermsRoute: TermsRoute,
+  TranslatorRoute: TranslatorRoute,
+  WriterRoute: WriterRoute,
   ApiChatRoute: ApiChatRoute,
   ApiToolRoute: ApiToolRoute,
 }
