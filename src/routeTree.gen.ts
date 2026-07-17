@@ -20,6 +20,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CodeLabRouteImport } from './routes/code-lab'
+import { Route as ChatRouteImport } from './routes/chat'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiToolRouteImport } from './routes/api/tool'
@@ -80,6 +81,11 @@ const CodeLabRoute = CodeLabRouteImport.update({
   path: '/code-lab',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -104,6 +110,7 @@ const ApiChatRoute = ApiChatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/chat': typeof ChatRoute
   '/code-lab': typeof CodeLabRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/chat': typeof ChatRoute
   '/code-lab': typeof CodeLabRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
@@ -139,6 +147,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/chat': typeof ChatRoute
   '/code-lab': typeof CodeLabRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
@@ -158,6 +167,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/chat'
     | '/code-lab'
     | '/contact'
     | '/disclaimer'
@@ -175,6 +185,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/chat'
     | '/code-lab'
     | '/contact'
     | '/disclaimer'
@@ -192,6 +203,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/chat'
     | '/code-lab'
     | '/contact'
     | '/disclaimer'
@@ -210,6 +222,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ChatRoute: typeof ChatRoute
   CodeLabRoute: typeof CodeLabRoute
   ContactRoute: typeof ContactRoute
   DisclaimerRoute: typeof DisclaimerRoute
@@ -304,6 +317,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodeLabRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -338,6 +358,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ChatRoute: ChatRoute,
   CodeLabRoute: CodeLabRoute,
   ContactRoute: ContactRoute,
   DisclaimerRoute: DisclaimerRoute,
