@@ -122,7 +122,7 @@ function LandingPage() {
       <section id="modules" className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         <div className="grid md:grid-cols-3 gap-5">
           {/* AI Assistant hero card */}
-          <div className="md:col-span-2 p-8 glass rounded-3xl group hover:border-primary/40 transition-all">
+          <Link to="/chat" className="md:col-span-2 p-8 glass rounded-3xl group hover:border-primary/40 transition-all block">
             <div className="flex flex-col h-full justify-between gap-8">
               <div>
                 <span className="text-xs font-bold uppercase tracking-widest text-brand-blue mb-3 block">
@@ -130,22 +130,25 @@ function LandingPage() {
                 </span>
                 <h3 className="font-display text-3xl font-bold mb-3">Akash AI Assistant</h3>
                 <p className="text-muted-foreground max-w-md">
-                  Next-generation language models tuned for professional workflows and creative reasoning.
+                  Chat with five expert personas — Tutor, Health Coach, Code Buddy, Career Coach, and Best Friend.
                 </p>
+                <div className="mt-4 inline-flex items-center text-sm font-semibold text-primary group-hover:translate-x-1 transition-transform">
+                  Open chat <ArrowRight className="ml-1 size-4" />
+                </div>
               </div>
               <div className="w-full aspect-[2/1] rounded-2xl overflow-hidden border border-border/60">
                 <img src={aiHero} alt="Akash AI dashboard preview" className="w-full h-full object-cover" />
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Cloud Vault */}
-          <div className="p-8 bg-gradient-brand rounded-3xl shadow-2xl shadow-primary/25 text-primary-foreground flex flex-col justify-between">
+          <Link to="/summarizer" className="p-8 bg-gradient-brand rounded-3xl shadow-2xl shadow-primary/25 text-primary-foreground flex flex-col justify-between">
             <div>
               <Cloud className="size-8 mb-4 opacity-90" />
               <h3 className="font-display text-2xl font-bold mb-2">Cloud Vault</h3>
               <p className="text-primary-foreground/80 text-sm">
-                Encrypted decentralized storage for your most sensitive data.
+                Encrypted decentralized storage plus AI summaries for your most sensitive documents.
               </p>
             </div>
             <div className="mt-8 flex justify-end">
@@ -153,11 +156,29 @@ function LandingPage() {
                 AV
               </div>
             </div>
-          </div>
+          </Link>
 
-          <ModuleCard icon={GraduationCap} title="EduFlow" desc="Adaptive learning paths tailored to your career goals and skill gaps." />
-          <ModuleCard icon={HeartPulse} title="HealthSync" desc="Real-time biometric monitoring and AI-driven preventative diagnostics." />
-          <ModuleCard icon={Bot} title="Smart Search" desc="Context-aware discovery across the entire web and your internal files." />
+          <ModuleCard to="/chat" icon={GraduationCap} title="EduFlow" desc="Adaptive learning paths tailored to your career goals and skill gaps." />
+          <ModuleCard to="/chat" icon={HeartPulse} title="HealthSync" desc="Talk to an AI health coach for wellness guidance and daily habits." />
+          <ModuleCard to="/summarizer" icon={Bot} title="Smart Search" desc="Summarize, translate, and analyze any content in seconds." />
+        </div>
+
+        {/* Special tools */}
+        <div className="mt-16">
+          <div className="flex items-end justify-between mb-6">
+            <div>
+              <h2 className="font-display text-2xl md:text-3xl font-bold">Special AI Tools</h2>
+              <p className="text-muted-foreground text-sm mt-1">Five new features. One click away.</p>
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <ModuleCard to="/chat" icon={MessagesSquare} title="Persona Chat" desc="Five specialised assistants: tutor, coach, coder, career mentor, and friend." />
+            <ModuleCard to="/translator" icon={Languages} title="AI Translator" desc="Translate text into 20+ languages while keeping tone and formatting." />
+            <ModuleCard to="/summarizer" icon={FileText} title="AI Summarizer" desc="Turn long articles or notes into crisp bullet-point summaries." />
+            <ModuleCard to="/writer" icon={PenLine} title="AI Writer" desc="Draft emails, essays, captions, and posts in seconds." />
+            <ModuleCard to="/code-lab" icon={Code2} title="Code Lab" desc="Write, explain, and debug code in any programming language." />
+            <ModuleCard to="/ideas" icon={Lightbulb} title="Idea Generator" desc="Brainstorm startup, content, and product ideas on demand." />
+          </div>
         </div>
       </section>
 
