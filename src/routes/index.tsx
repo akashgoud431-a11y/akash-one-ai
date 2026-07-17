@@ -38,11 +38,13 @@ function LandingPage() {
   const [query, setQuery] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const navigate = useNavigate();
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    const target = document.getElementById("modules");
-    target?.scrollIntoView({ behavior: "smooth" });
+    if (query.trim()) navigate({ to: "/chat" });
+    else document.getElementById("modules")?.scrollIntoView({ behavior: "smooth" });
   };
+
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/20">
