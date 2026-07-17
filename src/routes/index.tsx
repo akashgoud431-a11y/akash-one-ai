@@ -315,9 +315,9 @@ function LandingPage() {
   );
 }
 
-function ModuleCard({ icon: Icon, title, desc }: { icon: any; title: string; desc: string }) {
+function ModuleCard({ icon: Icon, title, desc, to }: { icon: any; title: string; desc: string; to: string }) {
   return (
-    <div className="p-8 glass rounded-3xl hover:border-primary/40 hover:shadow-xl transition-all group">
+    <Link to={to} className="p-8 glass rounded-3xl hover:border-primary/40 hover:shadow-xl transition-all group block">
       <div className="size-11 rounded-xl bg-gradient-brand grid place-items-center mb-5 shadow-lg shadow-primary/25">
         <Icon className="size-5 text-primary-foreground" />
       </div>
@@ -326,9 +326,10 @@ function ModuleCard({ icon: Icon, title, desc }: { icon: any; title: string; des
       <div className="mt-6 flex items-center text-sm font-semibold text-primary group-hover:translate-x-1 transition-transform">
         Explore <ArrowRight className="ml-1 size-4" />
       </div>
-    </div>
+    </Link>
   );
 }
+
 
 function Testimonial({ quote, name, title }: { quote: string; name: string; title: string }) {
   return (
